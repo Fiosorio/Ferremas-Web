@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block title %}Catálogo de Productos - Ferreemas{% endblock %}
+
+{% block content %}
+<div class="container catalogo-container">
+    <h1 class="mb-4">Catálogo de Productos</h1>
+
+    <div class="row mb-4">
+        <div class="col-md-3">
+            <div class="card categorias-card">
+                <div class="card-header categorias-header">
+                    <h5 class="mb-0">Categorías</h5>
+                </div>
+                <div class="list-group list-group-flush categorias-list">
+                    <a href="{% url 'catalogo' %}" class="list-group-item list-group-item-action categoria-item">Todas</a>
+                    {% for categoria in categorias %}
+                    <a href="{% url 'catalogo' %}?categoria={{ categoria.id }}" class="list-group-item list-group-item-action categoria-item">
+                        {{ categoria.nombre }}
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-9 productos-grid">
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                {% for producto in productos %}
+                <div class="col producto-col">
+                    <div class="card h-100 producto-card">
+                        {% if producto.imagen %}
+                        <img src="{{ producto.imagen.url }}" class="card-img-top producto-imagen" alt="{{ producto.nombre }}">
+                        {% else %}
+                        <img src="https://via.placeholder.com/300x200" class="card-img-top producto-imagen" alt="Imagen no disponible">
+                        {% endif %}
+                        <div class="card-body producto-body">
+                            <h5 class="card-title producto-titulo">{{ producto.nombre }}</h5>
+                            <p class="card-text producto-descripcion">{{ producto.descripcion|truncatechars:100 }}</p>
+                            <p class="card-text producto-precio"><strong>${{ producto.precio }}</strong></p>
+                        </div>
+                        <div class="card-footer producto-footer d-flex justify-content-between">
+                            <a href="{% url 'detalle_producto' producto.id %}" class="btn btn-primary producto-detalle-btn">Ver detalles</a>
+                           <a href="{% url 'agregar_al_carrito' producto.id %}" class="btn btn-success">
+    <i class="bi bi-cart-plus"></i> Agregar
+</a>
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <div class="col-12">
+                    <div class="alert alert-info">
+                        No hay productos disponibles en esta categoría.
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

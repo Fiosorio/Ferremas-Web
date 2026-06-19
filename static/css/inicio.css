@@ -1,0 +1,64 @@
+/* Banner principal */
+.card-img-overlay {
+    background: rgba(252, 246, 246, 0.4);
+    color: #fff;
+    text-align: left;
+    padding: 2rem;
+}
+
+/* Botones personalizados */
+.btn-primary {
+    background-color: #FFA500;
+    border-color: #FFA500;
+}
+
+.btn-primary:hover {
+    background-color: #e69500;
+    border-color: #e69500;
+}
+
+/* Productos destacados */
+.card {
+    box-shadow: 0 4px 8px rgba(14, 203, 216, 0.1);
+    transition: transform 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* Footer de la card */
+.card-footer .btn {
+    width: 48%;
+}
+
+/* Sección de ventajas */
+.card-body i {
+    font-size: 3rem;
+    color: #FFA500;
+}
+
+h2 {
+    font-weight: bold;
+    color: #e69500;
+}
+
+.container {
+    padding-top: 20px;
+}
+
+/* Texto truncado */
+.card-text {
+    color: #555;
+}
+
+/* Categorías */
+.btn-outline-primary {
+    border-color: #FFA500;
+    color: #FFA500;
+}
+
+.btn-outline-primary:hover {
+    background-color: #FFA500;
+    color: white;
+}

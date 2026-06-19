@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Pago Confirmado - Ferreemas{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    <h4 class="mb-0">¡Pago realizado con éxito!</h4>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-success">
+                        <h5>Tu pedido ha sido confirmado</h5>
+                        <p>Número de orden: <strong>{{ orden.id }}</strong></p>
+                        <p>Código de autorización: <strong>{{ transaccion.codigo_autorizacion }}</strong></p>
+                    </div>
+                    
+                    <h5>Detalles del pedido:</h5

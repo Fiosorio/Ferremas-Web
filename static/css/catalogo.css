@@ -1,0 +1,123 @@
+/* Estilos generales del contenedor del catálogo */
+.catalogo-container {
+    /* Ejemplo: Puedes agregar un padding general si lo deseas */
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+/* Estilos para la card de categorías */
+.categorias-card {
+    margin-bottom: 20px; /* Espacio debajo de la card de categorías */
+}
+
+.categorias-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #eee;
+    padding: 10px 15px;
+}
+
+.categorias-header h5 {
+    font-size: 1rem;
+    color: #FFA500;
+    margin-bottom: 0;
+}
+
+.categorias-list .categoria-item {
+    font-size: 0.95rem;
+    color: #FFA500;
+}
+
+.categorias-list .categoria-item:hover {
+    background-color: #e9ecef;
+}
+
+/* Estilos para la grid de productos */
+.productos-grid .row {
+    /* Puedes ajustar el espaciado entre filas si es necesario */
+    margin-bottom: 20px;
+}
+
+
+/* Estilos para la card de producto */
+.producto-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+}
+
+.producto-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos para la imagen del producto */
+.producto-imagen {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    max-height: 200px;
+    object-fit: cover;
+}
+
+/* Estilos para el cuerpo de la card del producto */
+.producto-body {
+    padding: 15px;
+}
+
+.producto-titulo {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.producto-descripcion {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 0.75rem;
+}
+
+.producto-precio strong {
+    color: #007bff;
+}
+
+/* Estilos para el footer de la card del producto */
+.producto-footer {
+    background-color: transparent;
+    border-top: 1px solid #eee;
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Estilos para los botones */
+.producto-detalle-btn,
+.producto-agregar-btn {
+    border-radius: 5px;
+    padding: 8px 15px;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.producto-detalle-btn {
+    background-color: #ffffff;
+    border-color: #007bff;
+    color: #fff;
+}
+
+.producto-detalle-btn:hover {
+    background-color: #ffffff;
+    border-color: #0056b3;
+}
+
+.producto-agregar-btn {
+    background-color: #28a745;
+    border-color: #28a745;
+    color: #fff;
+}
+
+.producto-agregar-btn:hover {
+    background-color: #1e7e34;
+    border-color: #1e7e34;
+}

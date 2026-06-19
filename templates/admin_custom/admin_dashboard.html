@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+{% block title %}Panel de Administración{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold" style="color: #0c7440;">Panel de Control General</h2>
+        <div>
+            <button type="button" class="btn btn-outline-primary me-2" data-bs-toggle="modal" data-bs-target="#modalCategoria">
+                <i class="bi bi-tag"></i> Nueva Categoría
+            </button>
+            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalProducto">
+                <i class="bi bi-plus-circle"></i> Nuevo Producto
+            </button>
+        </div>
+    </div>
+
+    <ul class="nav nav-tabs mb-4" id="adminTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="productos-tab" data-bs-toggle="tab" data-bs-target="#productos" type="button" role="tab">
+                <i class="bi bi-box-seam"></i> Productos
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="categorias-tab" data-bs-toggle="tab" data-bs-target="#categorias" type="button" role="tab">
+                <i class="bi bi-tags"></i> Categorías
+            </button>
+        </li>
+    </ul>
+
+    <div class="tab-content" id="adminTabContent">
+        <div class="tab-pane fade show active" id="productos" role="tabpanel">
+            <div class="table-responsive">
+                <table class="table table-hover shadow-sm align-middle">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ID</th><th>Imagen</th><th>Nombre</th><th>Categoría</th><th>Precio</th><th>Stock</th><th class="text-center">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for p in productos %}
+                        <tr>
+                            <td>{{ p.id }}</td>
+                            <td>
+                                {% if p.imagen %}<img src="{{ p.imagen.url }}" width="45" class="rounded">
+                                {% else %}<i class="bi bi-image text-muted"></i>{% endif %}
+                            </td>
+                            <td class="fw-bold">{{ p.nombre }}</td>
+                            <td><span class="badge bg-light text-dark border">{{ p.categoria.nombre }}</span></td>
+                            <td>${{ p.precio }}</td>
+                            <td>{{ p.stock }}</td>
+                            <td class="text-center">
+                                <a href="{% url 'producto_editar' p.id %}" class="btn btn-sm btn-outline-warning"><i class="bi bi-pencil"></i></a>
+                                <a href="{% url 'producto_eliminar' p.id %}" class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="tab-pane fade" id="categorias" role="tabpanel">
+            <div class="table-responsive">
+                <table class="table table-hover shadow-sm align-middle">
+                    <thead class="table-primary">
+                        <tr>
+                            <th>ID</th><th>Nombre</th><th>Descripción</th><th class="text-center">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for c in categorias %}
+                        <tr>
+                            <td>{{ c.id }}</td>
+                            <td class="fw-bold">{{ c.nombre }}</td>
+                            <td class="text-muted small">{{ c.descripcion|default:"Sin descripción" }}</td>
+                            <td class="text-center">
+                                <a href="{% url 'categoria_editar' c.id %}" class="btn btn-sm btn-outline-warning"><i class="bi bi-pencil"></i></a>
+                                <a href="{% url 'categoria_eliminar' c.id %}" class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></a>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr><td colspan="4" class="text-center">No hay categorías registradas.</td></tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalCategoria" tabindex="-1" aria-labelledby="modalCategoriaLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="modalCategoriaLabel">Agregar Nueva Categoría</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form method="post" action="{% url 'categoria_crear' %}">
+                    <div class="modal-body">
+                        {% csrf_token %}
+                        {{ form_categoria.as_p }}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Guardar Categoría</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalProducto" tabindex="-1" aria-labelledby="modalProductoLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header text-white" style="background-color: #0c7440;">
+                    <h5 class="modal-title" id="modalProductoLabel">Agregar Nuevo Producto</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form method="post" action="{% url 'producto_crear' %}" enctype="multipart/form-data">
+                    <div class="modal-body">
+                        {% csrf_token %}
+                        {{ form_producto.as_p }}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-success">Guardar Producto</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div> {% endblock %}

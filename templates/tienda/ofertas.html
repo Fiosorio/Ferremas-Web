@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}Ofertas - Ferreemas{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="text-center mb-5">
+        <h1 class="display-4">¡Grandes Ofertas!</h1>
+        <p class="lead">Aprovecha nuestros descuentos exclusivos en productos seleccionados.</p>
+    </div>
+
+    <div class="row">
+        {% for oferta in ofertas %}
+        <div class="col-md-4 mb-4">
+            <div class="card oferta-card h-100 shadow-sm">
+                {% if oferta.producto.imagen %}
+                <img src="{{ oferta.producto.imagen.url }}" class="card-img-top" alt="{{ oferta.producto.nombre }}">
+                {% else %}
+                <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Imagen no disponible">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ oferta.producto.nombre }}</h5>
+                    <p class="card-text">{{ oferta.producto.descripcion|truncatechars:80 }}</p>
+                    <p class="precio-original text-muted">
+                        Precio normal: <del>${{ oferta.producto.precio }}</del>
+                    </p>
+                    <p class="precio-oferta text-danger fw-bold">
+                        Oferta: ${{ oferta.precio_oferta }}
+                    </p>
+                </div>
+                <div class="card-footer d-flex justify-content-between">
+                    <a href="#" class="btn btn-outline-primary btn-sm">Ver detalles</a>
+                    <a href="#" class="btn btn-success btn-sm">
+                        <i class="bi bi-cart-plus"></i> Agregar
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12">
+            <div class="alert alert-warning text-center">
+                Actualmente no hay ofertas disponibles. ¡Vuelve pronto!
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

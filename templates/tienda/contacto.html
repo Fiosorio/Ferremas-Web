@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block title %}Contacto - Ferreemas{% endblock %}
+
+{% block content %}
+<div class="container mt-5 mb-5">
+    <div class="row mb-5">
+        <div class="col text-center">
+            <h1 class="display-4">Contáctanos</h1>
+            <p class="lead">¿Tienes dudas o consultas? Escríbenos y te responderemos a la brevedad.</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Formulario de contacto -->
+        <div class="col-md-7">
+          <form method="post" action="{% url 'contacto' %}">
+
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="nombre" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre" required>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Correo electrónico</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+                <div class="mb-3">
+                    <label for="asunto" class="form-label">Asunto</label>
+                    <input type="text" class="form-control" id="asunto" name="asunto">
+                </div>
+                <div class="mb-3">
+                    <label for="mensaje" class="form-label">Mensaje</label>
+                    <textarea class="form-control" id="mensaje" name="mensaje" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn" style="background-color: #FFA500; color: white;">Enviar mensaje</button>
+            </form>
+        </div>
+
+        <!-- Información de contacto -->
+        <div class="col-md-5">
+            <div class="card bg-light h-100 shadow-sm">
+                <div class="card-body">
+                    <h4 class="card-title">Información de contacto</h4>
+                    <p><i class="bi bi-geo-alt-fill text-primary"></i> Av. Principal #1234, Viña del Mar, Chile</p>
+                    <p><i class="bi bi-telephone-fill text-primary"></i> +56 9 1234 5678</p>
+                    <p><i class="bi bi-envelope-fill text-primary"></i> contacto@ferreemas.cl</p>
+                    <hr>
+                    <h5>Síguenos</h5>
+                    <a href="#" class="me-3"><i class="bi bi-facebook fs-4 text-primary"></i></a>
+                    <a href="#" class="me-3"><i class="bi bi-instagram fs-4 text-danger"></i></a>
+                    <a href="#"><i class="bi bi-twitter-x fs-4"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

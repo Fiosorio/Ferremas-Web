@@ -1,0 +1,7 @@
+form input, form textarea {
+    border-radius: 0.5rem;
+}
+
+.card-body i {
+    margin-right: 8px;
+}

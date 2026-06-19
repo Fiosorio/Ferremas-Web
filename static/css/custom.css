@@ -1,0 +1,95 @@
+/* Estilos generales */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #ffffff;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+/* Estilos de navegación */
+.navbar {
+    box-shadow: 0 2px 4px rgba(83, 36, 253, 0.1);
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.nav-link {
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #ffc107 !important;
+}
+
+.nav-link.active {
+    color: #ffc107 !important;
+}
+
+/* Estilos del footer */
+footer {
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+footer h5 {
+    font-weight: 600;
+    color: #ffffff;
+}
+
+footer .social-icons a {
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+
+footer .social-icons a:hover {
+    color: #0a58ca!important;
+}
+
+footer a {
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #0a58ca !important;
+}
+
+/* Estilos para tarjetas y botones */
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+.btn-primary:hover {
+    background-color: #0b5ed7;
+    border-color: #0a58ca;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .navbar-brand {
+        font-size: 1.2rem;
+    }
+    
+    footer {
+        text-align: center;
+    }
+}

@@ -1,0 +1,16 @@
+.oferta-card img {
+    height: 200px;
+    object-fit: cover;
+}
+
+.precio-original {
+    font-size: 0.9rem;
+}
+
+.precio-oferta {
+    font-size: 1.2rem;
+}
+
+.card-footer .btn {
+    width: 48%;
+}

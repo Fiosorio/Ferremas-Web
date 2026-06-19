@@ -1,0 +1,152 @@
+
+
+
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Ferreemas - Tu Ferretería Online{% endblock %}
+
+{% block content %}
+<div class="container"> <!-- principal -->
+    <div id="carruselFerreemas" class="carousel slide mb-5" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carruselFerreemas" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carruselFerreemas" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carruselFerreemas" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+
+    <div class="carousel-inner shadow rounded">
+        <div class="carousel-item active">
+             <img src="{% static 'img/LasMejoresMarcas.png' %}"  class="d-block w-100" alt="Marcas"
+                style="height: 400px; object-fit: cover;">
+        
+            <!-- Cambiamos text-start por text-center -->
+            <div class="carousel-caption d-none d-md-block text-center bg-opacity-50 p-4 rounded">
+                <a href="{% url 'catalogo' %}" class="btn btn-warning btn-lg mt-2">Catalogo</a>
+            </div>
+        </div>
+
+        <div class="carousel-item">
+             <img src="{% static 'img/mejores_ofertas.png' %}" class="d-block w-100" alt="Marcas"
+                style="height: 400px; object-fit: cover;">
+        
+            <!-- Cambiamos text-start por text-center -->
+            <div class="carousel-caption d-none d-md-block text-center  bg-opacity-50 p-4 rounded">
+                <a href="{% url 'ofertas' %}" class="btn btn-warning btn-lg mt-2">Ver ofertas</a>
+            </div>
+        </div>
+
+        </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#carruselFerreemas" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Anterior</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carruselFerreemas" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Siguiente</span>
+    </button>
+</div>
+    
+    
+    <div class="row mb-5">
+        <div class="col-12">
+            <h2 class="mb-4">Productos destacados</h2> <!-- destacados -->
+        </div>
+        
+        {% for producto in productos_destacados %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                {% if producto.imagen %}
+                <img src="{{ producto.imagen.url }}" class="card-img-top" alt="{{ producto.nombre }}">
+                {% else %}
+                <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Imagen no disponible">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ producto.nombre }}</h5>
+                    <p class="card-text">{{ producto.descripcion|truncatechars:100 }}</p>
+                    <p class="card-text"><strong>${{ producto.precio }}</strong></p>
+                </div>
+                <div class="card-footer d-flex justify-content-between">
+                    <a href="#" class="btn btn-primary">Ver detalles</a>
+                    <a href="{% url 'agregar_al_carrito' producto.id %}" class="btn btn-success">
+                        <i class="bi bi-cart-plus"></i> Agregar
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12">
+            <div class="alert alert-info">
+                No hay productos destacados disponibles en este momento.
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+    
+    <div class="row mb-5">
+        <div class="col-12">
+            <h2 class="mb-4">Nuestras categorías</h2> <!-- categorias -->
+        </div>
+        
+        {% for categoria in categorias %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body text-center">
+                    <h3 class="card-title">{{ categoria.nombre }}</h3>
+                    <p class="card-text">{{ categoria.descripcion|default:"Explora nuestra selección de productos en esta categoría."|truncatechars:100 }}</p>
+                    <a href="{% url 'catalogo' %}" class="btn btn-outline-primary">
+                        Ver productos
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12">
+            <div class="alert alert-info">
+                No hay categorías disponibles en este momento.
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+    <!-- Sección de ventajas -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <h2 class="mb-4">¿Por qué elegirnos?</h2>
+        </div>
+        
+        <div class="col-md-4 mb-4">
+            <div class="card text-center h-100">
+                <div class="card-body">
+                    <i class="bi bi-truck display-4 text-primary mb-3"></i>
+                    <h4 class="card-title">Envío rápido</h4>
+                    <p class="card-text">Entregamos tus productos en tiempo récord para que puedas comenzar tus proyectos sin demora.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 mb-4">
+            <div class="card text-center h-100">
+                <div class="card-body">
+                    <i class="bi bi-shield-check display-4 text-primary mb-3"></i>
+                    <h4 class="card-title">Calidad garantizada</h4>
+                    <p class="card-text">Todos nuestros productos son seleccionados cuidadosamente para asegurar la mejor calidad.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 mb-4">
+            <div class="card text-center h-100">
+                <div class="card-body">
+                    <i class="bi bi-headset display-4 text-primary mb-3"></i>
+                    <h4 class="card-title">Atención al cliente</h4>
+                    <p class="card-text">Nuestro equipo está disponible para ayudarte con cualquier duda o problema que puedas tener.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

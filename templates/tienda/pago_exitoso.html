@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container py-5 text-center">
+    <div class="card shadow-lg p-4">
+        <h2 class="text-success">¡Pago Realizado con Éxito!</h2>
+        <p class="lead">Tu pedido ha sido procesado correctamente.</p>
+        <hr>
+        <div class="text-start d-inline-block">
+            <p><strong>Orden de Compra:</strong> {{ res.buy_order }}</p>
+            <p><strong>Código de Autorización:</strong> {{ res.authorization_code }}</p>
+            <p><strong>Monto Pagado:</strong> ${{ res.amount }}</p>
+            <p><strong>Fecha:</strong> {{ res.transaction_date }}</p>
+        </div>
+        <div class="mt-4">
+            <a href="{% url 'home' %}" class="btn btn-primary">Volver al Inicio</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

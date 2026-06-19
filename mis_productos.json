@@ -1,0 +1,17 @@
+[
+    {"nombre": "Martillo Carpintero", "descripcion": "Martillo de acero al carbono", "precio": 8500, "categoria": "Herramientas", "stock": 50, "imagen": "martillo.jpg", "destacado": false},
+    {"nombre": "Taladro Percutor", "descripcion": "Taladro inalámbrico 20V", "precio": 45000, "categoria": "Herramientas", "stock": 15, "imagen": "taladro.jpg", "destacado": true},
+    {"nombre": "Cinta Métrica 5m", "descripcion": "Cinta métrica profesional", "precio": 3200, "categoria": "Medición", "stock": 100, "imagen": "cinta.jpg", "destacado": false},
+    {"nombre": "Destornillador Cruz", "descripcion": "Destornillador punta magnética", "precio": 1500, "categoria": "Herramientas", "stock": 200, "imagen": "destornillador.jpg", "destacado": false},
+    {"nombre": "Nivel de Burbuja", "descripcion": "Nivel magnético 60cm", "precio": 5500, "categoria": "Medición", "stock": 30, "imagen": "nivel.jpg", "destacado": true},
+    {"nombre": "Pintura Látex Blanca", "descripcion": "Pintura lavable interior", "precio": 12000, "categoria": "Pintura", "stock": 40, "imagen": "pintura.jpg", "destacado": false},
+    {"nombre": "Brocha 4 pulgadas", "descripcion": "Brocha para esmalte", "precio": 2100, "categoria": "Pintura", "stock": 80, "imagen": "brocha.jpg", "destacado": false},
+    {"nombre": "Set de Llaves Allen", "descripcion": "Kit 9 piezas milimétricas", "precio": 4800, "categoria": "Herramientas", "stock": 25, "imagen": "llaves.jpg", "destacado": false},
+    {"nombre": "Escuadra Metálica", "descripcion": "Escuadra de carpintero 12\"", "precio": 3900, "categoria": "Medición", "stock": 45, "imagen": "escuadra.jpg", "destacado": false},
+    {"nombre": "Rodillo para Pintar", "descripcion": "Rodillo felpa profesional", "precio": 2800, "categoria": "Pintura", "stock": 60, "imagen": "rodillo.jpg", "destacado": false},
+    {"nombre": "Sierra Caladora", "descripcion": "Sierra eléctrica potente", "precio": 35000, "categoria": "Herramientas", "stock": 10, "imagen": "sierra.jpg", "destacado": true},
+    {"nombre": "Lija de Grano Fino", "descripcion": "Pack 5 lijas madera", "precio": 1200, "categoria": "Pintura", "stock": 150, "imagen": "lija.jpg", "destacado": false},
+    {"nombre": "Vernier Digital", "descripcion": "Calibrador preciso 150mm", "precio": 18000, "categoria": "Medición", "stock": 12, "imagen": "vernier.jpg", "destacado": true},
+    {"nombre": "Espátula Metálica", "descripcion": "Espátula acero 4 pulgadas", "precio": 1900, "categoria": "Pintura", "stock": 70, "imagen": "espatula.jpg", "destacado": false},
+    {"nombre": "Taladro Atornillador", "descripcion": "Taladro compacto 12V", "precio": 28000, "categoria": "Herramientas", "stock": 20, "imagen": "taladro_mini.jpg", "destacado": false}
+]

@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% block title %}Checkout - Ferreemas{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    
+    {% if paso_pago %}
+    <div class="text-center py-5">
+        <div class="spinner-border text-primary mb-3" role="status">
+            <span class="visually-hidden">Cargando...</span>
+        </div>
+        <h2>Conectando con Webpay Plus...</h2>
+        <p>Estamos redirigiéndote al portal de pago seguro de Transbank. Por favor, no cierres esta ventana.</p>
+
+        <form action="{{ url }}" method="POST" id="form-transbank">
+            <input type="hidden" name="token_ws" value="{{ token }}" />
+        </form>
+
+        <script>
+            window.onload = function() {
+                document.getElementById('form-transbank').submit();
+            };
+        </script>
+    </div>
+
+    {% else %}
+    <h1 class="mb-4">Finalizar compra</h1>
+    
+    {% if error %}
+    <div class="alert alert-danger">{{ error }}</div>
+    {% endif %}
+    
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="mb-0">Dirección de envío</h5>
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="direccion" class="form-label">Dirección completa</label>
+                            <textarea class="form-control" id="direccion" name="direccion" rows="3" placeholder="Ej: Av. Concon 123, Departamento 402, Viña del Mar" required></textarea>
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary btn-lg">Pagar con Webpay Plus</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="alert alert-info">
+                <i class="bi bi-shield-lock-fill"></i> Serás redirigido a la plataforma segura de Transbank para realizar tu pago.
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">Resumen del pedido</h5>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        {% for item in carrito.items.all %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <div>
+                                <small class="text-muted">{{ item.cantidad }}x</small> {{ item.producto.nombre }}
+                            </div>
+                            <span>${{ item.subtotal }}</span>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    <hr>
+                    <div class="d-flex justify-content-between">
+                        <strong>Total a pagar:</strong>
+                        <strong class="text-primary h5">${{ carrito.total }}</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+</div>
+{% endblock %}

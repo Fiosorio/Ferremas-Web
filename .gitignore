@@ -1,0 +1,37 @@
+# Entorno virtual (esto es lo que más archivos mete)
+venv/
+.venv/
+env/
+
+# Carpetas de configuración de VS Code y editores
+.vscode/
+.idea/
+
+# Base de datos local
+db.sqlite3
+
+# Archivos temporales de sistema
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
+
+# Carpetas de librerías externas (si usas angular/node)
+node_modules/
+dist/
+
+
+.venv/
+node_modules/
+dist/
+*.pyc
+__pycache__/
+.vscode/
+db.sqlite3
+
+venv/
+.venv/
+__pycache__/
+db.sqlite3
+.vscode/
+*.pyc

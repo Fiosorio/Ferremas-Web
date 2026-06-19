@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ producto.nombre }} - Ferreemas{% endblock %}
+
+{% block content %}
+<div class="container">
+    <nav aria-label="breadcrumb" class="mb-4">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'catalogo' %}">Catálogo</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ producto.nombre }}</li>
+        </ol>
+    </nav>
+    
+    <div class="row">
+        <div class="col-md-6">
+            {% if producto.imagen %}
+            <img src="{{ producto.imagen.url }}" class="img-fluid rounded" alt="{{ producto.nombre }}">
+            {% else %}
+            <img src="https://via.placeholder.com/600x400" class="img-fluid rounded" alt="Imagen no disponible">
+            {% endif %}
+        </div>
+        
+        <div class="col-md-6">
+            <h1 class="mb-3">{{ producto.nombre }}</h1>
+            <p class="text-muted">Categoría: {{ producto.categoria.nombre }}</p>
+            
+            <h3 class="text-primary mb-4">${{ producto.precio }}</h3>
+            
+            <div class="mb-4">
+                <h5>Descripción:</h5>
+                <p>{{ producto.descripcion }}</p>
+            </div>
+            
+            <div class="mb-4">
+                <p>
+                    <strong>Disponibilidad:</strong> 
+                    {% if producto.stock > 0 %}
+                    <span class="text-success">En stock ({{ producto.stock }} disponibles)</span>
+                    {% else %}
+                    <span class="text-danger">Agotado</span>
+                    {% endif %}
+                </p>
+            </div>
+            
+            {% if producto.stock > 0 %}
+            <div class="d-grid gap-2">
+                <a href="{% url 'agregar_al_carrito' producto.id %}" class="btn btn-primary btn-lg">
+                    <i class="bi bi-cart-plus"></i> Agregar al carrito
+                </a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
